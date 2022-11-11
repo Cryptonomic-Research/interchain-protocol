@@ -4,8 +4,11 @@ function getEndpointId() {
     if (isLocalhost()) {
         return 30137
     }
-    if (isBKC()) {
+    if (isBKCTestnet()) {
         return 25925
+    }
+    if (isBKC()) {
+        return 96
     }
     return CHAIN_ID[hre.network.name]
 }
@@ -15,7 +18,11 @@ function isLocalhost() {
 }
 
 function isBKC() {
-    return hre.network.name === "bkc" || hre.network.name === "bkc_testnet"
+    return hre.network.name === "bkc"
+}
+
+function isBKCTestnet() {
+    return hre.network.name === "bkc_testnet"
 }
 
 function isTestnet() {
@@ -31,5 +38,4 @@ module.exports = {
     getEndpointId,
     isTestnet,
     isLocalhost,
-    isBKC,
 }
