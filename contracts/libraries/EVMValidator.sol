@@ -3,6 +3,6 @@
 pragma solidity 0.7.6;
 pragma abicoder v2;
 
-import "@layerzerolabs/proof-evm/contracts/MPTValidator.sol";
+import "../proof/MPTValidator01.sol";
 
-contract EVMValidator is MPTValidator {}
+abstract contract EVMValidator is MPTValidator01 {}
