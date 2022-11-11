@@ -18,6 +18,7 @@ require("dotenv").config()
 
 const BKC_PRIVATE_KEY: string = process.env.BKC_PRIVATE_KEY || ""
 const BKC_TESTNET_RPC: string = process.env.BKC_TESTNET_RPC || "https://rpc-testnet.bitkubchain.io"
+const BKC_RPC: string = process.env.BKC_RPC || "https://rpc.bitkubchain.io"
 
 const config: HardhatUserConfig = {
     defaultNetwork: "hardhat",
@@ -47,6 +48,11 @@ const config: HardhatUserConfig = {
                 enabled: process.env.FORKING === "true",
                 url: `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY_API_KEY}`,
             },
+        },
+
+        bkc: {
+            url: BKC_RPC,
+            accounts: [BKC_PRIVATE_KEY],
         },
 
         bkc_testnet: {
